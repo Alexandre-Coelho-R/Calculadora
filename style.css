@@ -1,0 +1,55 @@
+#divCalculadora{
+    background-color: black;
+    height: 90vh;
+    width: 40vw;
+    justify-self: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#divTela {
+    background-color: white;
+    height: 15%;
+    width: 90%;
+
+    justify-self: center;
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+    overflow: hidden;
+}
+
+#divTela > p {
+    margin: 0;
+    font-size: 2rem;
+    justify-self: right;
+}
+
+#divNumeros {
+    background-color: gray;
+    height: 80%;
+    width: 90%;
+
+    justify-self: center;
+    border-radius: 10px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+}
+
+#divNumeros button{
+    border: 1px solid black;
+    transition: 0.2s;
+}
+
+#divNumeros button:hover{
+    background-color: rgb(207, 207, 207);
+    cursor: pointer;
+}
+
+
+#divNumeros button p {
+    margin: 0;
+    font-size: 3rem;
+}

@@ -1,4 +1,4 @@
-// Botões
+// Pegar html
 
 const btSete = document.getElementById("sete");
 const btOito = document.getElementById("oito");
@@ -20,9 +20,9 @@ const btPonto = document.getElementById("ponto");
 const btIgual = document.getElementById("igual");
 const btSoma = document.getElementById("soma");
 
-// Tela
-
 const tela = document.getElementById("numeros");
+
+let podePonto = true
 
 // Código
 // Funções
@@ -37,26 +37,43 @@ function ClicouNumero(numero) {
     }
 }
 
+function terminaNumero() {
+    return !["+", "-", "*", "/"].includes(tela.textContent.slice(-1))
+}
+
 function clicarPonto() {
-    if (["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].includes(tela.textContent.slice(-1))) {
+    if (podePonto && ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].includes(tela.textContent.slice(-1))) {
         tela.textContent += ".";
+        podePonto = false
     }
 }
 
 function clicarSoma() {
-    tela.textContent += "+";
+    if (terminaNumero()) {
+        tela.textContent += "+";
+        podePonto = true
+    }    
 }
 
 function clicarSubtracao() {
-    tela.textContent += "-";
+    if (terminaNumero()) {
+        tela.textContent += "-";
+        podePonto = true
+    }  
 }
 
 function clicarMultiplicacao() {
-    tela.textContent += "*";
+    if (terminaNumero()) {
+        tela.textContent += "*";
+        podePonto = true
+    }   
 }
 
 function clicarDivisao() {
-    tela.textContent += "/";
+    if (terminaNumero()) {
+        tela.textContent += "/";
+        podePonto = true
+    }   
 }
 
 function clicarIgual() {
@@ -115,8 +132,11 @@ document.addEventListener("keydown", function(event){
     if (event.key == ".") clicarPonto();
     if (event.key == "=" || event.key == "Enter") clicarIgual();
     if (event.key == "Backspace"){
-        tela.textContent = tela.textContent.slice(0,-1);
-        if (tela.textContent.length == 0) tela.textContent = "0";
+        if (tela.textContent.length > 1 && !tela.textContent.endsWith("y")) {
+            tela.textContent = tela.textContent.slice(0,-1);
+        } else {
+            tela.textContent = "0";
+        }
     }
         
 });
